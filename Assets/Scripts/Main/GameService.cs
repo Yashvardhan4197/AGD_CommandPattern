@@ -29,6 +29,8 @@ namespace Command.Main
         public BattleService BattleService { get; private set; }
         public PlayerService PlayerService { get; private set; }
 
+        public CommandInvoker CommandInvoker { get; private set; }
+
         [SerializeField] private UIService uiService;
         public UIService UIService => uiService;
 
@@ -52,5 +54,7 @@ namespace Command.Main
         }
 
         private void Update() => InputService.UpdateInputService();
+
+        public void ProcessUnitCommand(UnitCommands unitCommands) => PlayerService.ProcessUnitCommand(unitCommands);
     }
 }

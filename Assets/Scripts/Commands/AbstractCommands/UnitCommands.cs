@@ -14,4 +14,17 @@ public abstract class UnitCommands : ICommand
     public abstract void Execute();
 
     public abstract bool WillHitTarget();
+
+    public void SetActorUnit(UnitController actorUnit)
+    {
+        this.actorUnit = actorUnit;
+    }
+    
+    public void SetTargetUnit(UnitController targetUnit)
+    {
+        this.targetUnit = targetUnit;
+    }
+
+    public UnitController GetActorUnit()=>actorUnit;
+    public UnitController GetTargetUnit()=>targetUnit;
 }
