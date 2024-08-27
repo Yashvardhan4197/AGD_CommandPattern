@@ -50,6 +50,7 @@ namespace Command.Main
             InputService = new InputService();
             BattleService = new BattleService(battleScriptableObjects);
             PlayerService = new PlayerService();
+            CommandInvoker=new CommandInvoker();
             uiService.Init(battleScriptableObjects.Count);
         }
 
