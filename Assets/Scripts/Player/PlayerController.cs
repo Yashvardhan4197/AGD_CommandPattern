@@ -32,7 +32,8 @@ namespace Command.Player
 
         public void ProcessUnitCommand(UnitCommands unitCommand)
         {
-            GameService.Instance.CommandInvoker.ProcessCommand(unitCommand);
+            GetUnitByID(unitCommand.commandData.ActorUnitID).ProcessUnitCommand(unitCommand);
+            //GameService.Instance.CommandInvoker.ProcessCommand(unitCommand);
         }
 
         public void StartPlayerTurn()

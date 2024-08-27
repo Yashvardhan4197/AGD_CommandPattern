@@ -55,6 +55,6 @@ namespace Command.Main
 
         private void Update() => InputService.UpdateInputService();
 
-        public void ProcessUnitCommand(UnitCommands unitCommands) => PlayerService.ProcessUnitCommand(unitCommands);
+        public void ProcessUnitCommand(UnitCommands unitCommand) => PlayerService.ProcessUnitCommand(unitCommand);
     }
 }

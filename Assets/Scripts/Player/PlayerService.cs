@@ -100,7 +100,7 @@ namespace Command.Player
         private void SetUnitReferences(UnitCommands unitCommand)
         {
             var actorUnit = GetPlayerById(unitCommand.commandData.ActorPlayerID).GetUnitByID(unitCommand.commandData.ActorUnitID);
-            var targetUnit=GetPlayerById(unitCommand.commandData.TargetPlayerID).GetUnitByID(unitCommand.commandData.TargetPlayerID);
+            var targetUnit=GetPlayerById(unitCommand.commandData.TargetPlayerID).GetUnitByID(unitCommand.commandData.TargetUnitID);
 
             unitCommand.SetTargetUnit(targetUnit);
             unitCommand.SetActorUnit(actorUnit);

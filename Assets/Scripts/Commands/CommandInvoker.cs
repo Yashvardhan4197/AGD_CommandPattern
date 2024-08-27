@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class CommandInvoker
 {
-    private Stack<ICommand> _command;
+    private Stack<ICommand> _command = new Stack<ICommand>();
     public CommandInvoker()
     {
-        _command = new Stack<ICommand>();
+        
     }
 
     public void ProcessCommand(ICommand command)
