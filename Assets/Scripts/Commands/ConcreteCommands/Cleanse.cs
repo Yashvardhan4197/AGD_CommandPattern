@@ -23,7 +23,11 @@ namespace Assets.Scripts.Commands.ConcreteCommands
 
         public override void Undo()
         {
-            targetUnit.CurrentPower = previousPower;
+            if (willHitTarget)
+            {
+                targetUnit.CurrentPower = previousPower;
+            }
+            actorUnit.Owner.ResetCurrentActiveUnit();
         }
 
     }

@@ -28,7 +28,7 @@ namespace Assets.Scripts.Commands.ConcreteCommands
         public override void Undo()
         {
             if(willHitTarget)
-    {
+            {
                 targetUnit.TakeDamage(actorUnit.CurrentPower);
                 actorUnit.Owner.ResetCurrentActiveUnit();
             }

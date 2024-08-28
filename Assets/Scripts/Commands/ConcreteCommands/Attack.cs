@@ -30,8 +30,15 @@ namespace Assets.Scripts.Commands.ConcreteCommands
 
         public override void Undo()
         {
-            actorUnit.RestoreHealth(actorUnit.CurrentPower);
-            actorUnit.Owner.ResetCurrentActiveUnit();
+            if (willHitTarget)
+            {
+                if (!targetUnit.IsAlive())
+                {
+                    targetUnit.Revive();
+                }
+                actorUnit.RestoreHealth(actorUnit.CurrentPower);
+                actorUnit.Owner.ResetCurrentActiveUnit();
+            }
         }
 
     }

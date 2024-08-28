@@ -33,6 +33,7 @@ namespace Assets.Scripts.Commands.ConcreteCommands
                 targetUnit.CurrentMaxHealth -= healthToDecrease;
                 targetUnit.TakeDamage(healthToDecrease);
             }
+            actorUnit.Owner.ResetCurrentActiveUnit();
         }
 
     }

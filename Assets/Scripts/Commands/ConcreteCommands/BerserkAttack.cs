@@ -29,10 +29,7 @@ namespace Assets.Scripts.Commands.ConcreteCommands
                 {
                     targetUnit.Revive();
                 }
-                else
-                {
-                    targetUnit.RestoreHealth(actorUnit.CurrentPower + 2);
-                }
+                  targetUnit.RestoreHealth(actorUnit.CurrentPower + 2);
             }
             else
             {
@@ -40,11 +37,9 @@ namespace Assets.Scripts.Commands.ConcreteCommands
                 {
                     actorUnit.Revive();
                 }
-                else
-                {
-                    actorUnit.RestoreHealth(actorUnit.CurrentPower + 2);
-                }
+                  actorUnit.RestoreHealth(actorUnit.CurrentPower + 2);
             }
+            actorUnit.Owner.ResetCurrentActiveUnit();
         }
 
     }
