@@ -90,11 +90,24 @@ namespace Command.Player
         }
 
         // TODO:    What is this??
-        public void ResetCurrentActivePlayer()
+
+        public void ResetCurrentActiveUnit()
         {
             units[activeUnitIndex].ResetUnitIndicator();
             activeUnitIndex--;
-            units[activeUnitIndex].StartUnitTurn();
+            while (activeUnitIndex >= 0)
+            {
+                if (!units[activeUnitIndex].IsAlive())
+                {
+                    activeUnitIndex--;
+                }
+                else
+                {
+                    units[activeUnitIndex].StartUnitTurn();
+                    break;
+                }
+            }
         }
+
     }
 }

@@ -20,5 +20,32 @@ namespace Assets.Scripts.Commands.ConcreteCommands
         {
             return true;
         }
+
+        public override void Undo()
+        {
+            if (willHitTarget)
+            {
+                if (!targetUnit.IsAlive())
+                {
+                    targetUnit.Revive();
+                }
+                else
+                {
+                    targetUnit.RestoreHealth(actorUnit.CurrentPower + 2);
+                }
+            }
+            else
+            {
+                if (!actorUnit.IsAlive())
+                {
+                    actorUnit.Revive();
+                }
+                else
+                {
+                    actorUnit.RestoreHealth(actorUnit.CurrentPower + 2);
+                }
+            }
+        }
+
     }
 }
