@@ -22,6 +22,8 @@ namespace Command.Main
     public class GameService : GenericMonoSingleton<GameService>
     {
         // Services:
+
+        public ReplayService ReplayService { get; private set; }
         public EventService EventService { get; private set; }
         public SoundService SoundService { get; private set; }
         public ActionService ActionService { get; private set; }
@@ -51,6 +53,7 @@ namespace Command.Main
             BattleService = new BattleService(battleScriptableObjects);
             PlayerService = new PlayerService();
             CommandInvoker=new CommandInvoker();
+            ReplayService = new ReplayService();
             uiService.Init(battleScriptableObjects.Count);
         }
 
