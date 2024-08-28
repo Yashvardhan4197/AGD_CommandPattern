@@ -25,6 +25,10 @@ public abstract class UnitCommands : ICommand
         this.targetUnit = targetUnit;
     }
 
+   
+
     public UnitController GetActorUnit()=>actorUnit;
     public UnitController GetTargetUnit()=>targetUnit;
+
+    public abstract void Undo();
 }

@@ -24,5 +24,14 @@ namespace Assets.Scripts.Commands.ConcreteCommands
             return true;
         }
 
+        public override void Undo()
+        {
+            if (willHitTarget)
+            {
+                targetUnit.CurrentPower -= (int)(targetUnit.CurrentPower * 0.2f);
+                actorUnit.Owner.ResetCurrentActiveUnit();
+            }
+        }
+
     }
 }

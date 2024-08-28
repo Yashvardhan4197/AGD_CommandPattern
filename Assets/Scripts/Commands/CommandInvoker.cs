@@ -1,10 +1,11 @@
+using Command.Main;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CommandInvoker
 {
-    private Stack<ICommand> _command = new Stack<ICommand>();
+    private Stack<ICommand> commandRegistry = new Stack<ICommand>();
     public CommandInvoker()
     {
         
@@ -16,7 +17,36 @@ public class CommandInvoker
         RegisterCommand(command);
     }
 
+    public void Undo()
+    {
+        
+        if (RegistryCountCheck() && CheckActivePlayer())
+        {
+            Debug.Log("UndoButtonpressed");
+            commandRegistry.Pop().Undo();
+        }
+    }
+
+    private bool RegistryCountCheck()
+    {
+        if(commandRegistry.Count > 0)
+        {
+            return true;
+        }return false;
+    }
+
+    private bool CheckActivePlayer()
+    {
+        if((commandRegistry.Peek() as UnitCommands).commandData.ActorPlayerID == GameService.Instance.PlayerService.ActivePlayerID)
+        {
+            return true;
+        }
+        return false;
+    }
+
     private void ExecuteCommand(ICommand command)=>command.Execute();
-    private void RegisterCommand(ICommand command)=>_command.Push(command);
+    private void RegisterCommand(ICommand command)=>commandRegistry.Push(command);
+
+
 
 }

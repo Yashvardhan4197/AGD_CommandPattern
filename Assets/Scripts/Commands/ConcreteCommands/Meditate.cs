@@ -24,5 +24,17 @@ namespace Assets.Scripts.Commands.ConcreteCommands
         {
             return true;
         }
+
+        public override void Undo()
+        {
+            if (willHitTarget)
+            {
+                var healthToDecrease = (int)(targetUnit.CurrentMaxHealth * 0.2f);
+                targetUnit.CurrentMaxHealth -= healthToDecrease;
+                targetUnit.TakeDamage(healthToDecrease);
+            }
+            actorUnit.Owner.ResetCurrentActiveUnit();
+        }
+
     }
 }

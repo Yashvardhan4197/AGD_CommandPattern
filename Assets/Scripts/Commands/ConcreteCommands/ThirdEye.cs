@@ -19,5 +19,16 @@ namespace Assets.Scripts.Commands.ConcreteCommands
         {
             return true;
         }
+        public override void Undo()
+        {
+            if(willHitTarget)
+            {
+                int healthToConvert = (int)(targetUnit.CurrentHealth * 0.25f);
+                targetUnit.RestoreHealth(healthToConvert);
+                targetUnit.CurrentPower -= healthToConvert;
+            }
+            actorUnit.Owner.ResetCurrentActiveUnit();
+        }
+
     }
 }

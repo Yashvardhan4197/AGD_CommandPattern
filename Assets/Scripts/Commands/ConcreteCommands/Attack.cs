@@ -17,13 +17,29 @@ namespace Assets.Scripts.Commands.ConcreteCommands
             this.commandData = commandData;
             willHitTarget = WillHitTarget();
         }
+
         public override void Execute()
         {
             GameService.Instance.ActionService.GetActionByType(Command.Actions.CommandType.Attack).PerformAction(actorUnit, targetUnit,willHitTarget);
         }
+
         public override bool WillHitTarget()
         {
             return true;
         }
+
+        public override void Undo()
+        {
+            if (willHitTarget)
+            {
+                if (!targetUnit.IsAlive())
+                {
+                    targetUnit.Revive();
+                }
+                targetUnit.RestoreHealth(actorUnit.CurrentPower);
+                actorUnit.Owner.ResetCurrentActiveUnit();
+            }
+        }
+
     }
 }
