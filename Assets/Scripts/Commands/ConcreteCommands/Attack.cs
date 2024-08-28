@@ -36,7 +36,7 @@ namespace Assets.Scripts.Commands.ConcreteCommands
                 {
                     targetUnit.Revive();
                 }
-                actorUnit.RestoreHealth(actorUnit.CurrentPower);
+                targetUnit.RestoreHealth(actorUnit.CurrentPower);
                 actorUnit.Owner.ResetCurrentActiveUnit();
             }
         }

@@ -29,7 +29,10 @@ namespace Assets.Scripts.Commands.ConcreteCommands
         {
             if(willHitTarget)
             {
-                targetUnit.TakeDamage(actorUnit.CurrentPower);
+                if (targetUnit.CurrentHealth < targetUnit.CurrentMaxHealth)
+                {
+                    targetUnit.TakeDamage(actorUnit.CurrentPower);        
+                }
                 actorUnit.Owner.ResetCurrentActiveUnit();
             }
         }

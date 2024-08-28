@@ -19,13 +19,21 @@ public class CommandInvoker
 
     public void Undo()
     {
-        if (!RegistryCountCheck() && CheckActivePlayer())
+        
+        if (RegistryCountCheck() && CheckActivePlayer())
         {
+            Debug.Log("UndoButtonpressed");
             commandRegistry.Pop().Undo();
         }
     }
 
-    private bool RegistryCountCheck() => commandRegistry.Count > 0;
+    private bool RegistryCountCheck()
+    {
+        if(commandRegistry.Count > 0)
+        {
+            return true;
+        }return false;
+    }
 
     private bool CheckActivePlayer()
     {
