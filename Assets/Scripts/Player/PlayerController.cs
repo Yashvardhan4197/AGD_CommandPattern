@@ -1,3 +1,4 @@
+using Command.Main;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -27,6 +28,12 @@ namespace Command.Player
             {
                 units.Add(new UnitController(this, unitScriptableObjects[i], unitPositions[i]));
             }
+        }
+
+        public void ProcessUnitCommand(UnitCommands unitCommand)
+        {
+            GetUnitByID(unitCommand.commandData.ActorUnitID).ProcessUnitCommand(unitCommand);
+            //GameService.Instance.CommandInvoker.ProcessCommand(unitCommand);
         }
 
         public void StartPlayerTurn()
