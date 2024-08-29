@@ -1,8 +1,8 @@
 using Command.Main;
 using Command.Player;
-using Command.Actions;
 using Assets.Scripts.Commands;
 using Assets.Scripts.Commands.ConcreteCommands;
+using Command.Actions;
 
 namespace Command.Input
 {

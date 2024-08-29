@@ -5,10 +5,11 @@ using UnityEngine;
 
 public class CommandInvoker
 {
-    private Stack<ICommand> commandRegistry = new Stack<ICommand>();
+    private Stack<ICommand> commandRegistry;
     public CommandInvoker()
     {
         SubscribeToEvents();
+        commandRegistry = new Stack<ICommand>();
     }
 
     public void ProcessCommand(ICommand command)
