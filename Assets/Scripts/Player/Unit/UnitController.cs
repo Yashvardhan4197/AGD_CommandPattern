@@ -1,10 +1,9 @@
 using UnityEngine;
 using Command.Main;
-using Command.Actions;
+using Command.Commands;
 using System.Collections;
 using System;
 using Object = UnityEngine.Object;
-
 namespace Command.Player
 {
     public class UnitController
@@ -147,16 +146,20 @@ namespace Command.Player
 
         public void ResetStats() => CurrentPower = unitScriptableObject.Power;
 
-        public void Destroy() => UnityEngine.Object.Destroy(unitView.gameObject);
+        public void DestroyObject() => Object.Destroy(unitView.gameObject);
 
         public void ResetUnitIndicator() => unitView.SetUnitIndicator(false);
 
         public Vector3 GetEnemyPosition() 
         {
-            if (Owner.PlayerID == 1)
-                return unitView.transform.position + unitScriptableObject.EnemyBattlePositionOffset;
-            else
-                return unitView.transform.position - unitScriptableObject.EnemyBattlePositionOffset;
+            if (unitView != null)
+            {
+                if (Owner.PlayerID == 1)
+                    return unitView.transform.position + unitScriptableObject.EnemyBattlePositionOffset;
+                else
+                    return unitView.transform.position - unitScriptableObject.EnemyBattlePositionOffset;
+            }
+            return new Vector3 (0, 0, 0);
         }
 
         public void Revive()

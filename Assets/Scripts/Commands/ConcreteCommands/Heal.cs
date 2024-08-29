@@ -1,4 +1,5 @@
 ﻿using Command.Main;
+using Command.Commands;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,7 +19,7 @@ namespace Assets.Scripts.Commands.ConcreteCommands
 
         public override void Execute()
         {
-            GameService.Instance.ActionService.GetActionByType(Command.Actions.CommandType.Heal).PerformAction(actorUnit, targetUnit, willHitTarget);
+            GameService.Instance.ActionService.GetActionByType(Command.Commands.CommandType.Heal).PerformAction(actorUnit, targetUnit, willHitTarget);
         }
         public override bool WillHitTarget()
         {

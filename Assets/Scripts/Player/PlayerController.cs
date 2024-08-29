@@ -1,6 +1,7 @@
 using Command.Main;
 using System.Collections.Generic;
 using UnityEngine;
+using Command.Commands;
 
 namespace Command.Player
 {
@@ -85,7 +86,7 @@ namespace Command.Player
 
         public void DestroyAllUnits()
         {
-            units.ForEach(unit => unit.Destroy());
+            units.ForEach(unit => unit.DestroyObject());
             units.Clear();
         }
 

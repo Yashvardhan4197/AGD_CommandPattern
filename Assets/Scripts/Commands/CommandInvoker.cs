@@ -2,13 +2,15 @@ using Command.Main;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Command.Commands;
 
 public class CommandInvoker
 {
-    private Stack<ICommand> commandRegistry = new Stack<ICommand>();
+    private Stack<ICommand> commandRegistry;
     public CommandInvoker()
     {
-        
+        SubscribeToEvents();
+        commandRegistry = new Stack<ICommand>();
     }
 
     public void ProcessCommand(ICommand command)
@@ -46,6 +48,14 @@ public class CommandInvoker
 
     private void ExecuteCommand(ICommand command)=>command.Execute();
     private void RegisterCommand(ICommand command)=>commandRegistry.Push(command);
+
+    private void SubscribeToEvents() => GameService.Instance.EventService.OnReplayButtonClicked.AddListener(SetReplayStack);
+
+    private void SetReplayStack()
+    {
+        GameService.Instance.ReplayService.SetCommandStack(commandRegistry);
+        commandRegistry.Clear();
+    }
 
 
 

@@ -16,7 +16,13 @@ namespace Command.Battle
             SubscribeToEvents();
         }
 
-        private void SubscribeToEvents() => GameService.Instance.EventService.OnBattleSelected.AddListener(LoadBattle);
+        private void SubscribeToEvents()
+        {
+            GameService.Instance.EventService.OnBattleSelected.AddListener(LoadBattle);
+            GameService.Instance.EventService.OnReplayButtonClicked.AddListener(ReplayButton);
+        }
+
+        private void ReplayButton() => LoadBattle(currentBattleId);
 
         private void LoadBattle(int battleId)
         {

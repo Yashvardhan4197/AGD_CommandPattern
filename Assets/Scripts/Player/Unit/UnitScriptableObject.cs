@@ -1,7 +1,7 @@
 using Command.Actions;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Command.Commands;
 namespace Command.Player
 {
     [CreateAssetMenu(fileName = "UnitScriptableObject", menuName = "ScriptableObjects/UnitScriptableObject")]

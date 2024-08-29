@@ -2,8 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface ICommand
+namespace Command.Commands
 {
-    public void Execute();
-    public void Undo();
+    public interface ICommand
+    {
+        public void Execute();
+        public void Undo();
+    }
+    public class CommandData
+    {
+        public int ActorUnitID;
+        public int TargetUnitID;
+        public int ActorPlayerID;
+        public int TargetPlayerID;
+
+        public CommandData(int ActorUnitID, int TargetUnitID, int ActorPlayerID, int TargetPlayerID)
+        {
+            this.ActorUnitID = ActorUnitID;
+            this.TargetUnitID = TargetUnitID;
+            this.ActorPlayerID = ActorPlayerID;
+            this.TargetPlayerID = TargetPlayerID;
+        }
+
+
+    }
 }
