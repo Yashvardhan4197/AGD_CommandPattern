@@ -86,7 +86,7 @@ namespace Command.Player
 
         public void DestroyAllUnits()
         {
-            units.ForEach(unit => unit.Destroy());
+            units.ForEach(unit => unit.DestroyObject());
             units.Clear();
         }
 

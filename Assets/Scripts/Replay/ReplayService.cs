@@ -30,10 +30,8 @@ namespace Command.Replay
         {
             yield return new WaitForSeconds(1);
             if (recordedCommandRegistry.Count > 0)
-            {
-                Debug.Log("hello cutiee");
-                GameService.Instance.CommandInvoker.ProcessCommand(recordedCommandRegistry.Peek());
-                recordedCommandRegistry.Pop();
+            {  
+                GameService.Instance.CommandInvoker.ProcessCommand(recordedCommandRegistry.Pop());
             }
         }
 

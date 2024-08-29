@@ -24,16 +24,14 @@ namespace Command.Main
     public class GameService : GenericMonoSingleton<GameService>
     {
         // Services:
-
-        public ReplayService ReplayService { get; private set; }
         public EventService EventService { get; private set; }
         public SoundService SoundService { get; private set; }
         public ActionService ActionService { get; private set; }
         public InputService InputService { get; private set; }
         public BattleService BattleService { get; private set; }
         public PlayerService PlayerService { get; private set; }
-
         public CommandInvoker CommandInvoker { get; private set; }
+        public ReplayService ReplayService { get; private set; }
 
         [SerializeField] private UIService uiService;
         public UIService UIService => uiService;

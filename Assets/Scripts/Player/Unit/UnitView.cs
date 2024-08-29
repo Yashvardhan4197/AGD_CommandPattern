@@ -16,6 +16,7 @@ namespace Command.Player
             unitAnimator = GetComponent<Animator>();
         }
 
+
         private void Start()
         {
             PlayAnimation(UnitAnimations.IDLE);
