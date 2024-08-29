@@ -1,5 +1,5 @@
 ﻿using Command.Main;
-
+using Command.Commands;
 namespace Assets.Scripts.Commands.ConcreteCommands
 {
     public class Cleanse: UnitCommands
@@ -14,7 +14,7 @@ namespace Assets.Scripts.Commands.ConcreteCommands
         public override void Execute()
         {
             previousPower=targetUnit.CurrentPower;
-            GameService.Instance.ActionService.GetActionByType(Command.Actions.CommandType.Cleanse).PerformAction(actorUnit, targetUnit, willHitTarget);
+            GameService.Instance.ActionService.GetActionByType(Command.Commands.CommandType.Cleanse).PerformAction(actorUnit, targetUnit, willHitTarget);
         }
         public override bool WillHitTarget()
         {

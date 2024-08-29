@@ -1,9 +1,7 @@
 using Command.Main;
 using Command.Player;
-using Assets.Scripts.Commands;
+using Command.Commands;
 using Assets.Scripts.Commands.ConcreteCommands;
-using Command.Actions;
-
 namespace Command.Input
 {
     public class InputService

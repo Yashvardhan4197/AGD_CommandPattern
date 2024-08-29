@@ -1,5 +1,5 @@
 ﻿using Command.Main;
-
+using Command.Commands;
 
 namespace Assets.Scripts.Commands.ConcreteCommands
 {
@@ -13,7 +13,7 @@ namespace Assets.Scripts.Commands.ConcreteCommands
         }
         public override void Execute()
         {
-            GameService.Instance.ActionService.GetActionByType(Command.Actions.CommandType.AttackStance).PerformAction(actorUnit, targetUnit, willHitTarget);
+            GameService.Instance.ActionService.GetActionByType(Command.Commands.CommandType.AttackStance).PerformAction(actorUnit, targetUnit, willHitTarget);
         }
         public override bool WillHitTarget()
         {

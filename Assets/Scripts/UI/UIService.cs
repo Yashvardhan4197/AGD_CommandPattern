@@ -1,9 +1,9 @@
 
-using Command.Actions;
 using Command.Input;
 using Command.Main;
 using System.Collections.Generic;
 using UnityEngine;
+using Command.Commands;
 
 namespace Command.UI
 {
@@ -38,8 +38,10 @@ namespace Command.UI
         public void Init(int battleCount)
         {
             ShowBattleSelectionView(battleCount);
-            GameService.Instance.EventService.OnReplayButtonClicked.AddListener(HideBattleEndUI);
+            SubscribeToEvents();
         }
+
+        private void SubscribeToEvents() => GameService.Instance.EventService.OnReplayButtonClicked.AddListener(HideBattleEndUI);
 
         private void ShowBattleSelectionView(int battleCount) => battleSelectionController.Show(battleCount);
 
@@ -57,11 +59,11 @@ namespace Command.UI
         {
             switch (GameService.Instance.ReplayService.replayState)
             {
-                case ReplayState.ACTIVE:
+                case Replay.ReplayState.ACTIVE:
                     Debug.Log("call working yesh");
-                    StartCoroutine(GameService.Instance.ReplayService.ExecuteNext());
+                    GameService.Instance.StartCoroutine(GameService.Instance.ReplayService.ExecuteNext());
                     break;
-                case ReplayState.DEACTIVE:
+                case Replay.ReplayState.DEACTIVE:
                     actionSelectionController.Show(executableActions);
                     GameService.Instance.InputService.SetInputState(InputState.SELECTING_ACTION);
                     break;
