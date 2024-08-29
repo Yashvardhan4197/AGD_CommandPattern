@@ -1,4 +1,6 @@
 using Command.Actions;
+using UnityEngine.Events;
+using UnityEngine.UIElements;
 
 /**  This script demonstrates implementation of the Observer Pattern.
 *  If you're interested in learning about Observer Pattern, 
@@ -17,6 +19,9 @@ namespace Command.Events
         {
             OnBattleSelected = new GameEventController<int>();
             OnActionSelected = new GameEventController<CommandType>();
+            OnReplayButtonClicked = new GameEventController();
         }
+
+        public GameEventController OnReplayButtonClicked {  get; private set; } 
     }
 }

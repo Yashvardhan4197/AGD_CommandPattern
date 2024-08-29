@@ -8,7 +8,7 @@ public class CommandInvoker
     private Stack<ICommand> commandRegistry = new Stack<ICommand>();
     public CommandInvoker()
     {
-        
+        SubscribeToEvents();
     }
 
     public void ProcessCommand(ICommand command)
@@ -46,6 +46,14 @@ public class CommandInvoker
 
     private void ExecuteCommand(ICommand command)=>command.Execute();
     private void RegisterCommand(ICommand command)=>commandRegistry.Push(command);
+
+    private void SubscribeToEvents() => GameService.Instance.EventService.OnReplayButtonClicked.AddListener(SetReplayStack);
+
+    private void SetReplayStack()
+    {
+        GameService.Instance.ReplayService.SetCommandStack(commandRegistry);
+        commandRegistry.Clear();
+    }
 
 
 
