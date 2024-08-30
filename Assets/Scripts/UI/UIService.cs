@@ -60,7 +60,6 @@ namespace Command.UI
             switch (GameService.Instance.ReplayService.replayState)
             {
                 case Replay.ReplayState.ACTIVE:
-                    Debug.Log("call working yesh");
                     GameService.Instance.StartCoroutine(GameService.Instance.ReplayService.ExecuteNext());
                     break;
                 case Replay.ReplayState.DEACTIVE:
