@@ -1,7 +1,5 @@
 
 using Command.Commands;
-using UnityEngine.Events;
-using UnityEngine.UIElements;
 
 /**  This script demonstrates implementation of the Observer Pattern.
 *  If you're interested in learning about Observer Pattern, 
@@ -15,6 +13,7 @@ namespace Command.Events
     {
         public GameEventController<int> OnBattleSelected { get; private set; }
         public GameEventController<CommandType> OnActionSelected { get; private set; }
+        public GameEventController OnReplayButtonClicked { get; private set; }
 
         public EventService()
         {
@@ -23,6 +22,6 @@ namespace Command.Events
             OnReplayButtonClicked = new GameEventController();
         }
 
-        public GameEventController OnReplayButtonClicked {  get; private set; } 
+
     }
 }

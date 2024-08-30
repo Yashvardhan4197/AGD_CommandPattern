@@ -16,7 +16,7 @@ namespace Command.Replay
 
         public void SetReplayState(ReplayState replayState) => this.replayState = replayState;
 
-
+        /*
         public void SetCommandStack(Stack<ICommand> commandStack)
         {
             Debug.Log("Tf the size is:" + commandStack.Count);
@@ -25,13 +25,15 @@ namespace Command.Replay
             Debug.Log("ff the size is:" + recordedCommandRegistry.Count);
 
         }
+        */
 
+        public void SetCommandStack(Stack<ICommand> commandsToSet) => recordedCommandRegistry = new Stack<ICommand>(commandsToSet);
         public IEnumerator ExecuteNext()
         {
             yield return new WaitForSeconds(1);
             if (recordedCommandRegistry.Count > 0)
             {  
-                GameService.Instance.CommandInvoker.ProcessCommand(recordedCommandRegistry.Pop());
+                GameService.Instance.ProcessUnitCommand(recordedCommandRegistry.Pop() as UnitCommands);
             }
         }
 
